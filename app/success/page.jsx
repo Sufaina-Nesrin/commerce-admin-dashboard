@@ -9,33 +9,35 @@ import {
   ShoppingBag,
 } from 'lucide-react'
 
-
 import {
   useSearchParams,
   useRouter,
 } from 'next/navigation'
 
-import { useEffect } from 'react'
+import {
+  useEffect,
+  Suspense,
+} from 'react'
 
-export default function PaymentSuccessPage() {
 
-    const searchParams =
-  useSearchParams()
+function PaymentSuccessContent() {
 
-const router = useRouter()
+  const searchParams = useSearchParams()
+  const router = useRouter()
 
-useEffect(() => {
+  useEffect(() => {
 
-  const payment =
-    searchParams.get('payment')
+    const payment =
+      searchParams.get('payment')
 
-  if (payment !== 'success') {
+    if (payment !== 'success') {
 
-    router.push('/')
+      router.push('/')
 
-  }
+    }
 
-}, [])
+  }, [searchParams, router])
+
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
 
@@ -175,6 +177,22 @@ useEffect(() => {
         </div>
 
       </div>
+
     </div>
   )
+}
+
+
+export default function PaymentSuccessPage() {
+
+  return (
+
+    <Suspense fallback={<div>Loading...</div>}>
+
+      <PaymentSuccessContent />
+
+    </Suspense>
+
+  )
+
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { MoreVertical, Plus, Trash2, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { addBanner, getBanners, deleteBanner } from "@/lib/firestore/banner";
