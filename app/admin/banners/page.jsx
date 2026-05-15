@@ -152,12 +152,14 @@ export default function BannerPage() {
               className="group relative w-full bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-200 hover:shadow-xl transition-all duration-300"
             >
               <div className="relative h-[180px] sm:h-[220px] md:h-[240px] w-full overflow-hidden">
-                <Image
-                  src={banner.image}
-                  alt="Banner"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+                {banner.image && (
+                  <Image
+                    src={banner.image}
+                    alt="Banner"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                )}
 
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
